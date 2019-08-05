@@ -1,0 +1,9 @@
+---
+keepalived1: 192.168.43.90
+keepalived2: 192.168.43.211
+notification_email: nandanjha.navneet@gmail.com
+notification_email_from: hello@blabla.com
+smtp_server: xxx.xxx.xxx.xxx
+keepalived1_interface: enp0s3
+keepalived2_interface: enp0s3
+virtual_ipaddress: 192.168.43.149

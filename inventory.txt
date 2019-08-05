@@ -1,0 +1,6 @@
+[keepalived_hosts]
+#keepalived1 ansible_host=192.168.5.147 ansible_connection=ssh ansible_ssh_user=osboxes ansible_ssh_pass=osboxes.org
+#keepalived2 ansible_host=192.168.5.148 ansible_connection=ssh ansible_ssh_user=osboxes ansible_ssh_pass=osboxes.org 
+
+keepalived1 ansible_host=192.168.43.90 ansible_connection=ssh ansible_ssh_user=osboxes ansible_ssh_pass=osboxes.org
+keepalived2 ansible_host=192.168.43.211 ansible_connection=ssh ansible_ssh_user=osboxes ansible_ssh_pass=osboxes.org 

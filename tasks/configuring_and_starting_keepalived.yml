@@ -1,0 +1,27 @@
+---
+
+  - name: copy configuration file to server1
+    template:
+      src: templates/server1_keepalived.conf.j2
+      dest: /etc/keepalived/keepalived.conf
+      force: yes
+    #delegate_to: "{{ keepalived1 }}"
+    when: inventory_hostname == "keepalived1"
+
+  - name: copy configuration file to server2
+    template:
+      src: templates/server2_keepalived.conf.j2
+      dest: /etc/keepalived/keepalived.conf
+      force: yes
+    #delegate_to: "{{ keepalived2 }}"
+    when: inventory_hostname == "keepalived2"
+
+  - name: Disable SELinux
+    selinux:
+      state: disabled
+
+
+  - name: start the keepalived service
+    service:
+      name: keepalived
+      state: restarted

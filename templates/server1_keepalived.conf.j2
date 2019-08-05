@@ -1,0 +1,38 @@
+#keepalived configuration
+
+! Configuration File for keepalived
+vrrp_script chk_apache2 {
+    script "killall -0 httpd"
+    interval 1
+    rise 60
+    fall 1
+}
+
+
+global_defs {
+   notification_email {
+     {{ notification_email }}
+   }
+   notification_email_from {{ notification_email_from }}
+   smtp_server {{ smtp_server }}
+   smtp_connect_timeout 30
+}
+
+vrrp_instance VI_apache2_dcos_test {
+    state MASTER
+    interface {{ keepalived1_interface }}
+    virtual_router_id 1
+    smtp_alert
+    priority 200
+    advert_int 1
+    unicast_src_ip {{ keepalived1 }}
+    unicast_peer {
+        {{ keepalived2 }}
+    }
+    virtual_ipaddress {
+        {{ virtual_ipaddress }}
+    }
+    track_script {
+        chk_apache2
+    }
+}

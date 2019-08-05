@@ -1,0 +1,10 @@
+---
+- name: installation of keepalived
+  yum: 
+    name: keepalived
+    state: present
+
+- name: enable the keepalived service
+  service:
+    name: keepalived
+    enabled: yes

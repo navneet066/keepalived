@@ -1,0 +1,10 @@
+---
+- name: keepalived installation
+  hosts: keepalived_hosts
+  become: yes
+  tasks:
+    - include: tasks/stop_and_disable_firewall.yml
+    - include: tasks/installing_and_starting_httpd.yml
+    - include: tasks/installing_and_enabling_keepalived.yml
+    - include: tasks/configuring_and_starting_keepalived.yml
+
